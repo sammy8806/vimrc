@@ -21,7 +21,6 @@ set incsearch
 set hlsearch
 
 syntax on
-
 filetype off
 
 set runtimepath+=~/.vim/bundle/vundle/
@@ -96,6 +95,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 let NERDTreeIgnore=['\~$', '\.lo$', '\.la$', '\.pyc']
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 let Tlist_Use_Right_Window = 1
 let os = substitute(system('uname'), "\n", "", "")
@@ -104,7 +105,7 @@ if os == "FreeBSD"
 endif
 
 let g:vundle_default_git_proto = 'git'
-let g:changelog_username = 'Gasol Wu <gasol.wu@gmail.com>'
+let g:changelog_username = 'Steven Tappert <admin@dark-it.net>'
 
 let g:gitgutter_enabled = 0
 
