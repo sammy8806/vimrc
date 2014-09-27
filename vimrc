@@ -26,42 +26,34 @@ filetype off
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle "airblade/vim-gitgutter"
+Bundle 'airblade/vim-gitgutter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-surround'
-Bundle "garbas/vim-snipmate"
+Bundle 'garbas/vim-snipmate'
 Bundle '2072/PHP-Indenting-for-VIm'
-Bundle 'millermedeiros/vim-statline'
 Bundle 'tpope/vim-fugitive'
-Bundle 'taglist.vim'
 Bundle 'sukima/xmledit'
-Bundle 'majutsushi/tagbar'
-Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'Gasol/vim-scripts'
 Bundle 'Gasol/vim-php'
-Bundle 'tpope/vim-cucumber'
 set wildignore+=*/vim-php/doc/*
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'gnuchangelog'
-Bundle 'sprsquish/thrift.vim'
 Bundle 'fs111/pydoc.vim'
 Bundle 'Efficient-python-folding'
 Bundle 'tpope/vim-markdown'
 Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 1
-Bundle 'EasyMotion'
-Bundle 'joonty/vdebug'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'xml.vim'
 
 " vim-snipmate dependencies
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/vim-snippets"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
+
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on
 
@@ -94,9 +86,18 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" NerdTree
 let NERDTreeIgnore=['\~$', '\.lo$', '\.la$', '\.pyc']
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Toggle nerdtree with F10
+map <F8> :NERDTreeToggle<CR>
+
+" Current file in nerdtree
+map <F9> :NERDTreeFind<CR>
+
+" Auto Markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 let Tlist_Use_Right_Window = 1
 let os = substitute(system('uname'), "\n", "", "")
@@ -105,12 +106,18 @@ if os == "FreeBSD"
 endif
 
 let g:vundle_default_git_proto = 'git'
-let g:changelog_username = 'Steven Tappert <admin@dark-it.net>'
 
-let g:gitgutter_enabled = 0
+" Gitgutter
+let g:gitgutter_enabled = 1
+highlight clear SignColumn
 
 if filereadable($HOME.'/.vimrc_local')
 	source $HOME/.vimrc_local
 endif
+
+"key to insert mode with paste using F2 key
+map <F2> :set paste<CR>i
+" Leave paste mode on exit
+au InsertLeave * set nopaste
 
 comm! W exec 'w !sudo tee % > /dev/null' | e!
