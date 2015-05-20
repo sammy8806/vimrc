@@ -20,6 +20,8 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 set incsearch
 set hlsearch
 
+set laststatus=2
+
 syntax on
 filetype off
 
