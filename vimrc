@@ -20,7 +20,10 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 set incsearch
 set hlsearch
 
-set laststatus=2
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set ignorecase
 
 syntax on
 filetype off
@@ -28,15 +31,15 @@ filetype off
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+set laststatus=2
+
 Bundle 'airblade/vim-gitgutter'
 Bundle 'kien/ctrlp.vim'
-Bundle 'derekwyatt/vim-scala'
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-surround'
 Bundle 'garbas/vim-snipmate'
-Bundle '2072/PHP-Indenting-for-VIm'
 Bundle 'tpope/vim-fugitive'
 Bundle 'sukima/xmledit'
 Bundle 'Gasol/vim-scripts'
@@ -54,8 +57,17 @@ Bundle 'xml.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
-
 Bundle 'bling/vim-airline'
+
+" C++ Autocomplete
+Bundle "valloric/YouCompleteMe"
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_auto_trigger = 1
+let g:ycm_error_symbol = '!>'
+let g:ycm_warning_symbol = '#>'
+let g:ycm_complete_in_comments = 1
+let g:ycm_add_preview_to_completeopt = 1 "try but maybe set to 0 again
+let g:ycm_confirm_extra_conf = 0
 
 filetype plugin indent on
 
