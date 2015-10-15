@@ -33,34 +33,38 @@ call vundle#rc()
 
 set laststatus=2
 
-Bundle 'airblade/vim-gitgutter'
-Bundle 'kien/ctrlp.vim'
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-surround'
-Bundle 'garbas/vim-snipmate'
-Bundle 'tpope/vim-fugitive'
-Bundle 'sukima/xmledit'
-Bundle 'Gasol/vim-scripts'
-Bundle 'Gasol/vim-php'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'kien/ctrlp.vim'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-surround'
+Plugin 'garbas/vim-snipmate'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sukima/xmledit'
+Plugin 'Gasol/vim-scripts'
+Plugin 'Gasol/vim-php'
 set wildignore+=*/vim-php/doc/*
-Bundle 'fs111/pydoc.vim'
-Bundle 'Efficient-python-folding'
-Bundle 'tpope/vim-markdown'
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'fs111/pydoc.vim'
+Plugin 'Efficient-python-folding'
+Plugin 'tpope/vim-markdown'
+Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 1
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'xml.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'flazz/vim-colorschemes'
 
 " vim-snipmate dependencies
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'bling/vim-airline'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'honza/vim-snippets'
+Plugin 'bling/vim-airline'
+
+" Tagbar
+Plugin 'majutsushi/tagbar'
+nmap <F10> :TagbarToggle<CR>
 
 " C++ Autocomplete
-Bundle "valloric/YouCompleteMe"
+Plugin 'valloric/YouCompleteMe'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 let g:ycm_error_symbol = '!>'
@@ -99,6 +103,11 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" vim-indent-guides
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
 " NerdTree
 let NERDTreeIgnore=['\~$', '\.lo$', '\.la$', '\.pyc']
